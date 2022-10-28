@@ -12,13 +12,21 @@ int main(void)
     _Fcomplex fcomp = CMPLXF(-0.5f, 1.25f);
     _Lcomplex lcomp = CMPLXL(100.25L, 300.75L);
 
-    dcomp = cadd(dcomp, CMPLX(1.5, 0.5));
-    fcomp = caddf(fcomp, CMPLXF(1.5f, 0.75f));
-    lcomp = caddl(lcomp, CMPLXL(1.75L, 10.25L));
+    dcomp = caddcc(dcomp, CMPLX(1.5, 0.5));
+    fcomp = caddccf(fcomp, CMPLXF(1.5f, 0.75f));
+    lcomp = caddccl(lcomp, CMPLXL(1.75L, 10.25L));
 
-    dcomp = csub(dcomp, CMPLX(1.5, 0.5));
-    fcomp = csubf(fcomp, CMPLXF(1.5f, 0.75f));
-    lcomp = csubl(lcomp, CMPLXL(1.75L, 10.25L));
+    dcomp = caddcr(dcomp, 2.5);
+    fcomp = caddcrf(fcomp, -1.5f);
+    lcomp = caddcrl(lcomp, 5.0L);
+
+    dcomp = csubcc(dcomp, CMPLX(1.5, 0.5));
+    fcomp = csubccf(fcomp, CMPLXF(1.5f, 0.75f));
+    lcomp = csubccl(lcomp, CMPLXL(1.75L, 10.25L));
+
+    dcomp = csubcr(dcomp, 2.5);
+    fcomp = csubcrf(fcomp, -1.5f);
+    lcomp = csubcrl(lcomp, 5.0L);
 
     dcomp = cmulcc(dcomp, CMPLX(0.2, 10.0));
     fcomp = cmulccf(fcomp, CMPLXF(1.5f, 20.0f));

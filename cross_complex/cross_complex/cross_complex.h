@@ -9,42 +9,74 @@
 #define CMPLXF      _FCOMPLEX_
 #define CMPLXL      _LCOMPLEX_
 
-// Complex Add
-static inline _Dcomplex cadd(_Dcomplex a, _Dcomplex b)
+// Complex Add (a complex with a complex)
+static inline _Dcomplex caddcc(_Dcomplex a, _Dcomplex b)
 {
     return CMPLX(creal(a) + creal(b),
         cimag(a) + cimag(b));
 }
 
-static inline _Fcomplex caddf(_Fcomplex a, _Fcomplex b)
+static inline _Fcomplex caddccf(_Fcomplex a, _Fcomplex b)
 {
     return CMPLXF(crealf(a) + crealf(b),
         cimagf(a) + cimagf(b));
 }
 
-static inline _Lcomplex caddl(_Lcomplex a, _Lcomplex b)
+static inline _Lcomplex caddccl(_Lcomplex a, _Lcomplex b)
 {
     return CMPLXL(creall(a) + creall(b),
         cimagl(a) + cimagl(b));
 }
 
-// Complex Subtraction
-static inline _Dcomplex csub(_Dcomplex a, _Dcomplex b)
+// Complex Add (a complex with a real floating-point number)
+static inline _Dcomplex caddcr(_Dcomplex a, double b)
+{
+    return CMPLX(creal(a) + b, cimag(a));
+}
+
+static inline _Fcomplex caddcrf(_Fcomplex a, float b)
+{
+    return CMPLXF(crealf(a) + b, cimagf(a));
+}
+
+static inline _Lcomplex caddcrl(_Lcomplex a, long double b)
+{
+    return CMPLXL(creall(a) + b, cimagl(a));
+}
+
+// Complex Subtraction (a complex with a complex)
+static inline _Dcomplex csubcc(_Dcomplex a, _Dcomplex b)
 {
     return CMPLX(creal(a) - creal(b),
         cimag(a) - cimag(b));
 }
 
-static inline _Fcomplex csubf(_Fcomplex a, _Fcomplex b)
+static inline _Fcomplex csubccf(_Fcomplex a, _Fcomplex b)
 {
     return CMPLXF(crealf(a) - crealf(b),
         cimagf(a) - cimagf(b));
 }
 
-static inline _Lcomplex csubl(_Lcomplex a, _Lcomplex b)
+static inline _Lcomplex csubccl(_Lcomplex a, _Lcomplex b)
 {
     return CMPLXL(creall(a) - creall(b),
         cimagl(a) - cimagl(b));
+}
+
+// Complex Subtraction (a complex with a real floating-point number)
+static inline _Dcomplex csubcr(_Dcomplex a, double b)
+{
+    return CMPLX(creal(a) - b, cimag(a));
+}
+
+static inline _Fcomplex csubcrf(_Fcomplex a, float b)
+{
+    return CMPLXF(crealf(a) - b, cimagf(a));
+}
+
+static inline _Lcomplex csubcrl(_Lcomplex a, long double b)
+{
+    return CMPLXL(creall(a) - b, cimagl(a));
 }
 
 // Complex Multiplication (a complex with a complex)
@@ -136,39 +168,71 @@ static inline _Lcomplex cdivcrl(_Lcomplex a, long double b)
 }
 
 #else
-// Other compilers that support C11 <complex.h>
+// Other C compilers that support C11 <complex.h>
 typedef double complex          _Dcomplex;
 typedef float complex           _Fcomplex;
 typedef long double complex     _Lcomplex;
 
-// Complex Add
-static inline _Dcomplex cadd(_Dcomplex a, _Dcomplex b)
+// Complex Add (a complex with a complex)
+static inline _Dcomplex caddcc(_Dcomplex a, _Dcomplex b)
 {
     return a + b;
 }
 
-static inline _Fcomplex caddf(_Fcomplex a, _Fcomplex b)
+static inline _Fcomplex caddccf(_Fcomplex a, _Fcomplex b)
 {
     return a + b;
 }
 
-static inline _Lcomplex caddl(_Lcomplex a, _Lcomplex b)
+static inline _Lcomplex caddccl(_Lcomplex a, _Lcomplex b)
 {
     return a + b;
 }
 
-// Complex Subtraction
-static inline _Dcomplex csub(_Dcomplex a, _Dcomplex b)
+// Complex Add (a complex with a real floating-point number)
+static inline _Dcomplex caddcr(_Dcomplex a, double b)
+{
+    return a + b;
+}
+
+static inline _Fcomplex caddcrf(_Fcomplex a, float b)
+{
+    return a + b;
+}
+
+static inline _Lcomplex caddcrl(_Lcomplex a, long double b)
+{
+    return a + b;
+}
+
+// Complex Subtraction (a complex with a complex)
+static inline _Dcomplex csubcc(_Dcomplex a, _Dcomplex b)
 {
     return a - b;
 }
 
-static inline _Fcomplex csubf(_Fcomplex a, _Fcomplex b)
+static inline _Fcomplex csubccf(_Fcomplex a, _Fcomplex b)
 {
     return a - b;
 }
 
-static inline _Lcomplex csubl(_Lcomplex a, _Lcomplex b)
+static inline _Lcomplex csubccl(_Lcomplex a, _Lcomplex b)
+{
+    return a - b;
+}
+
+// Complex Subtraction (a complex with a real floating-point number)
+static inline _Dcomplex csubcr(_Dcomplex a, double b)
+{
+    return a - b;
+}
+
+static inline _Fcomplex csubcrf(_Fcomplex a, float b)
+{
+    return a - b;
+}
+
+static inline _Lcomplex csubcrl(_Lcomplex a, long double b)
 {
     return a - b;
 }
